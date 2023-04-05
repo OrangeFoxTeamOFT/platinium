@@ -1,36 +1,34 @@
 mapmanager = {}
 
 function mapmanager:enter()
-    ui = require 'src.States.resources.MapManagerStateUI'
-    ui.load()
+    ui = require 'src.States.interface.MapManagerStateUI'
+    bg = love.graphics.newImage("resources/images/GUI/background.png")
+    logo = love.graphics.newImage("resources/images/Assets/platiniumLogo.png")
 end
 
 function mapmanager:draw()
-    gui:draw()
+    love.graphics.draw(bg, 0, 0, 0, 20, 10)
+    love.graphics.setColor(1, 1, 1, 0.5)
+    love.graphics.draw(logo, love.graphics.getWidth() / 2, love.graphics.getHeight() / 2, 0, 0.8, 0.8, logo:getWidth() / 2, logo:getHeight() / 2)
+    love.graphics.setColor(1, 1, 1, 1)
+    suit.draw()
 end
 
 function mapmanager:update(elapsed)
-    gui:update(elapsed)
+    ui.load()
 end
 
 function mapmanager:keypressed(k)
-    gui:keypress(k)
+    suit.keypressed(k)
+end
+
+function mapmanager:textedited(t, s, l)
+    suit.textedited(t, s, l)
 end
 
 function mapmanager:textinput(k)
-    gui:textinput(k)
+    suit.textinput(k)
 end
 
-function mapmanager:mousepressed(x, y, button)
-    gui:mousepress(x, y, button)
-end
-
-function mapmanager:mousereleased(x, y, button)
-    gui:mouserelease(x, y, button)
-end
-
-function mapmanager:wheelmoved(x, y)
-    gui:mousewheel(x, y)
-end
 
 return mapmanager
