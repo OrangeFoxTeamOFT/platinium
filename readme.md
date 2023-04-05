@@ -2,7 +2,7 @@
 
 ![Alt text](resources/images/Assets/platiniumLogo.png)
 
-Platinium is a Free and open source Map editor built in Löve2D framework, inspired by [IridiumEd (Mobile only)](https://github.com/OrangeFoxTeamOFT/Iridium-0.0.3).
+Platinium is a Free and open source Map editor built in [Löve2D](https://love2d.org) framework, inspired by [IridiumEd (Mobile only)](https://github.com/OrangeFoxTeamOFT/Iridium-0.0.3).
 
 ![Alt text](resources/images/Assets/platiniumFeatures.png)
 
