@@ -35,4 +35,5 @@ Everyone who helps will be credited here [Contributors list](contributors.md)
 ![Alt text](resources/images/Assets/platiniumBuild.png)
 
 >**[1]** - Make sure you have installed Love2D v11.4 or above. To check if is installed correctly go to your command prompt and type `love`. If a "no game" screen appears the love is installed correctly on your path.
+
 >**[2]** - Run the `boot.cmd` file.
