@@ -14,7 +14,7 @@ bgColor_b = {text = "0"}
 MapData = {
     Meta = {
         mapname = mapName_input.text,
-        editorVersion = "0.0.1",
+        editorVersion = Config.editorVersion,
         Map = {
             backgroundColor = {
                 r = tonumber(bgColor_r.text),
@@ -90,6 +90,17 @@ function mapui.load()
             if mapName_input.text ~= "" then
                 if gridSize_input.text ~= "" then
                     if type(tonumber(gridSize_input.text)) == "number" then
+                        MapData.Meta.Map.backgroundColor.r = tonumber(bgColor_r.text)
+                        MapData.Meta.Map.backgroundColor.g = tonumber(bgColor_g.text)
+                        MapData.Meta.Map.backgroundColor.b = tonumber(bgColor_b.text)
+
+                        MapData.Meta.Map.gridColor.r = tonumber(gridColor_r.text)
+                        MapData.Meta.Map.gridColor.g = tonumber(gridColor_g.text)
+                        MapData.Meta.Map.gridColor.b = tonumber(gridColor_b.text)
+                        MapData.Meta.Map.gridColor.a = tonumber(gridColor_a.text)
+
+                        MapData.Meta.Map.gridSize = tonumber(gridSize_input.text)
+
                         love.filesystem.createDirectory("Maps/" .. mapName_input.text)
                         love.filesystem.createDirectory("Maps/" .. mapName_input.text .. "/tiles")
                         mapfile = love.filesystem.newFile("Maps/" .. mapName_input.text .. "/map.json", "w")

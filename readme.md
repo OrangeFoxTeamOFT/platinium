@@ -24,7 +24,9 @@ Platinium is a Free and open source Map editor built in [Löve2D](https://love2d
 - Available in:
 >- **Portugues (Brazillian)**
 >- **English**
-
+>- **Spanish**
+>- **Germany**
+>- **French**
 
 ![Alt text](resources/images/Assets/platiniumContributions.png)
 
