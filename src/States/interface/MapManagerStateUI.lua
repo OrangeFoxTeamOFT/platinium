@@ -36,10 +36,14 @@ MapData = {
 
 showCreateMapItems = false
 showLoadMapItems = false
+showLanguageItems = false
+showThemesItems = false
 
 function mapui.load()
     createButton = suit.Button(lang.mapmanager.btn_create, 20, 20, 120, 30)
     loadButton = suit.Button(lang.mapmanager.btn_load, 150, 20, 120, 30)
+    languageButton = suit.Button(lang.mapmanager.btn_language, love.graphics.getWidth() - 240, 0, 120, 30)
+    themesButton = suit.Button(lang.mapmanager.btn_themes, love.graphics.getWidth() - 120, 0, 120, 30)
     if createButton.hit then
         showCreateMapItems = true
         showLoadMapItems = false
@@ -48,6 +52,21 @@ function mapui.load()
         showLoadMapItems = true
         showCreateMapItems = false
     end
+    if languageButton.hit then
+        if showLanguageItems then
+            showLanguageItems = false
+        else
+            showLanguageItems = true
+        end
+    end
+    if themesButton.hit then
+        if showThemesItems then
+            showThemesItems = false
+        else
+            showThemesItems = true
+        end
+    end
+
     if showCreateMapItems then
         suit.Label(lang.mapmanager.lbl_mapname, 20, 100)
         suit.Input(mapName_input, 20, 130, 120, 30)
@@ -101,6 +120,28 @@ function mapui.load()
                     suit.Label("[ERROR] : Failed to load | Invalid map", 20, 210)
                 end
             end
+        end
+    end
+    if showLanguageItems then
+        Languages = love.filesystem.getDirectoryItems("Languages")
+        y = 30
+        for items = 1, #Languages, 1 do
+            if suit.Button(string.gsub(Languages[items], ".ini", ""), love.graphics.getWidth() - 240, y, 120, 30).hit then
+                Config.language = string.gsub(Languages[items], ".ini", "")
+                save()
+            end
+            y = y + 30
+        end
+    end
+    if showThemesItems then
+        Themes = love.filesystem.getDirectoryItems("Themes")
+        y = 30
+        for items = 1, #Themes, 1 do
+            if suit.Button(string.gsub(Themes[items], ".json", ""), love.graphics.getWidth() - 120, y, 120, 30).hit then
+                Config.theme = string.gsub(Themes[items], ".json", "")
+                save()
+            end
+            y = y + 30
         end
     end
 end

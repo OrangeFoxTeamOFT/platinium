@@ -13,7 +13,7 @@ function love.load()
 
     Config = {
         editorVersion = "0.0.1",
-        language = "en",
+        language = "english",
         theme = "dark"
     }
 
@@ -24,11 +24,6 @@ function love.load()
         sf:close()
     end
 
-    Config = json.decode(love.filesystem.read("prefs.json"))
-    lang = lip.load("Languages/" .. Config.language .. ".ini")
-
-    theme.load(Config.theme)
-
     States = {
         LevelEditorState = require 'src.States.LevelEditorState',
         MapManagerState = require 'src.States.MapManagerState'
@@ -36,6 +31,13 @@ function love.load()
 
     gamestate.registerEvents()
     gamestate.switch(States.MapManagerState)
+end
+
+function love.update(elapsed)
+    Config = json.decode(love.filesystem.read("prefs.json"))
+    lang = lip.load("Languages/" .. Config.language .. ".ini")
+
+    theme.load(Config.theme)
 end
 
 function save()
