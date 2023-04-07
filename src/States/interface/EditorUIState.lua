@@ -69,8 +69,7 @@ function UIState.load()
         save_btn = suit.Button(lang.editor.popup_btn_file_save, 0, 30, 100, 30)
         exit_btn = suit.Button(lang.editor.popup_btn_file_exit, 0, 60, 100, 30)
         if save_btn.hit then
-            toSave = json.encode(Map)
-            love.filesystem.write("Maps/" .. lvleditor.mapName .. "/map.json", toSave)
+            love.filesystem.write("Maps/" .. lvleditor.mapName .. "/map.json", json.encode(Map))
         end
         if exit_btn.hit then
             gamestate.switch(States.MapManagerState)
