@@ -28,6 +28,8 @@ Platinium is a Free and open source Map editor built in [Löve2D](https://love2d
 >- **Germany**
 >- **French**
 
+- Object System (Create different elements to your game based on Object IDS)
+
 ![Alt text](resources/images/Assets/platiniumContributions.png)
 
 Contributions are open, just fork, edit and commit.

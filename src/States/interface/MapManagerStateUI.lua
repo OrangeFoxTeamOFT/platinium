@@ -90,6 +90,7 @@ function mapui.load()
             if mapName_input.text ~= "" then
                 if gridSize_input.text ~= "" then
                     if type(tonumber(gridSize_input.text)) == "number" then
+                        MapData.Meta.mapname = string.gsub(mapName_input.text, " ", "")
                         MapData.Meta.Map.backgroundColor.r = tonumber(bgColor_r.text)
                         MapData.Meta.Map.backgroundColor.g = tonumber(bgColor_g.text)
                         MapData.Meta.Map.backgroundColor.b = tonumber(bgColor_b.text)
@@ -101,12 +102,13 @@ function mapui.load()
 
                         MapData.Meta.Map.gridSize = tonumber(gridSize_input.text)
 
-                        love.filesystem.createDirectory("Maps/" .. mapName_input.text)
-                        love.filesystem.createDirectory("Maps/" .. mapName_input.text .. "/tiles")
-                        mapfile = love.filesystem.newFile("Maps/" .. mapName_input.text .. "/map.json", "w")
+                        love.filesystem.createDirectory("Maps/" .. string.gsub(mapName_input.text, " ", ""))
+                        love.filesystem.createDirectory("Maps/" .. string.gsub(mapName_input.text, " ", "") .. "/export")
+                        love.filesystem.createDirectory("Maps/" .. string.gsub(mapName_input.text, " ", "") .. "/tiles")
+                        mapfile = love.filesystem.newFile("Maps/" .. string.gsub(mapName_input.text, " ", "") .. "/map.json", "w")
                         mapfile:write(json.encode(MapData))
                         mapfile:close()
-                        States.LevelEditorState.mapName = mapName_input.text
+                        States.LevelEditorState.mapName = string.gsub(mapName_input.text, " ", "")
                         gamestate.switch(States.LevelEditorState)
                     end
                 end
@@ -123,9 +125,9 @@ function mapui.load()
         end
         if popup_loadButton.hit then
             if mapName_input_load.text ~= "" then
-                folderExist = love.filesystem.getInfo("Maps/" .. mapName_input_load.text)
+                folderExist = love.filesystem.getInfo("Maps/" .. string.gsub(mapName_input_load.text, " ", ""))
                 if folderExist ~= nil then
-                    States.LevelEditorState.mapName = mapName_input_load.text
+                    States.LevelEditorState.mapName = string.gsub(mapName_input_load.text, " ", "")
                     gamestate.switch(States.LevelEditorState)
                 else
                     suit.Label("[ERROR] : Failed to load | Invalid map", 20, 210)

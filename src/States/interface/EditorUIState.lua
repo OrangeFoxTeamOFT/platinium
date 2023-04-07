@@ -8,6 +8,25 @@ function UIState.load()
     file_btn = suit.Button(lang.editor.btn_file, 0, 0, 100, 30)
     edit_btn = suit.Button(lang.editor.btn_edit, 100, 0, 100, 30)
     help_btn = suit.Button(lang.editor.btn_help, 200, 0, 100, 30)
+
+    if suit.Button("", {id=1},400, 0, 32, 32).hit then
+        placingMode = "tiles"
+    end
+    if suit.Button("", {id=2},432, 0, 32, 32).hit then
+        placingMode = "objects"
+    end
+
+    if suit.isHovered(1) then
+        canPlace = false
+    else
+        canPlace = true
+    end
+    if suit.isHovered(2) then
+        canPlace = false
+    else
+        canPlace = true
+    end
+
     if file_btn.hovered then
         canPlace = false
     else
