@@ -41,3 +41,9 @@ Everyone who helps will be credited here [Contributors list](contributors.md)
 >**[1]** - Make sure you have installed Love2D v11.4 or above. To check if is installed correctly go to your command prompt and type `love`. If a "no game" screen appears the love is installed correctly on your path.
 
 >**[2]** - Run the `boot.cmd` file.
+
+![Alt text](resources/images/Assets/platiniumLibraries.png)
+
+> ### [SUIT - Vrld](https://github.com/vrld/SUIT)
+> ### [Json - Actboy168](https://github.com/actboy168/json.lua)
+> ### [LIP - Videah](https://github.com/videah/Love_INI_Parser)
