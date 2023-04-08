@@ -30,5 +30,4 @@ function mapmanager:textinput(k)
     suit.textinput(k)
 end
 
-
 return mapmanager
