@@ -4,6 +4,19 @@ function installer.install()
     love.filesystem.createDirectory("Maps")
     love.filesystem.createDirectory("Themes")
     love.filesystem.createDirectory("Languages")
+    love.filesystem.createDirectory("Exporters")
+
+    exportScripts = love.filesystem.getDirectoryItems("src/Components/Export")
+    for item = 1, #exportScripts, 1 do
+        themeFile = love.filesystem.newFile("Exporters/" .. exportScripts[item], "w")
+        themeFile:write(love.filesystem.read("src/Components/Export/" .. exportScripts[item]))
+        themeFile:close()
+    end
+
+    image = love.filesystem.read("resources/images/GUI/background.png")
+    ImgFile = love.filesystem.newFile("background.png", "w")
+    ImgFile:write(image)
+    ImgFile:close()
 
     -- install local themes on the player machine --
     themes = love.filesystem.getDirectoryItems("resources/data/themes")

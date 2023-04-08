@@ -45,15 +45,15 @@ function lvleditor:draw()
         Map.Meta.Map.backgroundColor.b / 255
     )
     for _, tile in ipairs(Map.Tiles) do
-        love.graphics.draw(Tiles[tile.id], tile.x - editorOffsetX * Map.Meta.Map.gridSize, tile.y  - editorOffsetY * Map.Meta.Map.gridSize)
+        love.graphics.draw(Tiles[tile.id], tile.x - editorOffsetX * Map.Meta.Map.gridSize, tile.y - editorOffsetY * Map.Meta.Map.gridSize)
     end
 
     for _, Object in ipairs(Map.Objects) do
-        love.graphics.rectangle("line", Object.x, Object.y, Object.w, Object.h)
+        love.graphics.rectangle("line", Object.x - editorOffsetX * Map.Meta.Map.gridSize, Object.y - editorOffsetY * Map.Meta.Map.gridSize, Object.w, Object.h)
         love.graphics.setColor(1,1,1,0.4)
-        love.graphics.rectangle("fill", Object.x, Object.y, Object.w, Object.h)
+        love.graphics.rectangle("fill", Object.x - editorOffsetX * Map.Meta.Map.gridSize, Object.y - editorOffsetY * Map.Meta.Map.gridSize, Object.w, Object.h)
         love.graphics.setColor(1,1,1,1)
-        love.graphics.print(Object.id, Object.x + Object.w / 2 - 7, Object.y + Object.h / 2 - 7)
+        love.graphics.print(Object.id, Object.x + Object.w / 2 - 7 - editorOffsetX * Map.Meta.Map.gridSize, Object.y + Object.h / 2 - 7 - editorOffsetY * Map.Meta.Map.gridSize)
     end
 
     love.graphics.setColor(
@@ -81,8 +81,8 @@ function lvleditor:draw()
     love.graphics.rectangle("line", marker.x, marker.y, Map.Meta.Map.gridSize, Map.Meta.Map.gridSize)
 
     suit.draw()
-    love.graphics.draw(icons.edit, 400, 0)
-    love.graphics.draw(icons.object, 432, 0)
+    love.graphics.draw(icons.edit, 500, 0)
+    love.graphics.draw(icons.object, 532, 0)
 end
 
 function lvleditor:update(elapsed)

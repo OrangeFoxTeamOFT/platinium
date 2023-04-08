@@ -6,17 +6,17 @@ Platinium is a Free and open source Map editor built in [Löve2D](https://love2d
 
 ![Alt text](resources/images/Assets/platiniumFeatures.png)
 
-- Multilanguage (English | Portuguese)
 - Easy to use and built
 - Import your own textures
-- Compatibility with [IridiumEd](https://github.com/OrangeFoxTeamOFT/Iridium-0.0.3)[In - Maintance].
-- Themeing system with 6 themes available:
+- Compatibility with [IridiumEd](https://github.com/OrangeFoxTeamOFT/Iridium-0.0.3) (With Plugin support).
+- Themeing system with 7 themes available:
 
 >- **Light**
 >- **Dark**
 >- **Pink**
 >- **Blue Sapphire**
 >- **Emerald Green**
+>- **Purple Cyber**
 >- **Red Ruby**
 
 - Allow you create your own themes and import it.

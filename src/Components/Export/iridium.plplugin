@@ -1,0 +1,16 @@
+function init()
+    mapData = json.decode(love.filesystem.read("Maps/" .. lvleditor.mapName .. "/map.json"))
+    iridiumMapData = {}
+    iridiumMapData.blocks = mapData.Tiles
+    iridiumMapData.gradeColor = {}
+    iridiumMapData.gradeColor.r = mapData.Meta.Map.gridColor.r
+    iridiumMapData.gradeColor.g = mapData.Meta.Map.gridColor.g
+    iridiumMapData.gradeColor.b = mapData.Meta.Map.gridColor.b
+    iridiumMapData.gradeColor.a = mapData.Meta.Map.gridColor.a
+    iridiumMapData.gradeSize = mapData.Meta.Map.gridSize
+
+    love.filesystem.createDirectory("Maps/" .. lvleditor.mapName .. "/export/" .. lvleditor.mapName)
+    iridiumFile = love.filesystem.newFile("Maps/" .. lvleditor.mapName .. "/export/"  .. lvleditor.mapName .. "/map.json", "w")
+    iridiumFile:write(json.encode(iridiumMapData))
+    iridiumFile:close()
+end

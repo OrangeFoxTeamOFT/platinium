@@ -3,17 +3,30 @@ UIState = {}
 btn_file_enable = false
 btn_edit_enable = false
 btn_help_enable = false
+btn_export_enable = false
 
 function UIState.load()
     file_btn = suit.Button(lang.editor.btn_file, 0, 0, 100, 30)
     edit_btn = suit.Button(lang.editor.btn_edit, 100, 0, 100, 30)
     help_btn = suit.Button(lang.editor.btn_help, 200, 0, 100, 30)
 
-    if suit.Button("", {id=1},400, 0, 32, 32).hit then
+    placeTileBtn = suit.Button("", 500, 0, 32, 32)
+    placeObjectBtn = suit.Button("",532, 0, 32, 32)
+
+    export_btn = suit.Button("Export", {id=3},300, 0, 100, 30)
+
+    if placeTileBtn.hit then
         placingMode = "tiles"
     end
-    if suit.Button("", {id=2},432, 0, 32, 32).hit then
+    if placeObjectBtn.hit then
         placingMode = "objects"
+    end
+    if export_btn.hit then
+        if btn_export_enable then
+            btn_export_enable = false
+        else
+            btn_export_enable = true
+        end
     end
 
     if suit.isHovered(1) then
@@ -125,6 +138,18 @@ function UIState.load()
             canPlace = false
         else
             canPlace = true
+        end
+    end
+    if btn_export_enable then
+        y = 30
+        exporters = love.filesystem.getDirectoryItems("Exporters")
+        for item = 1, #exporters, 1 do
+            if suit.Button(string.gsub(string.gsub(exporters[item], ".plplugin", ""), "-", " "), {id=item}, 300, y, 100, 30).hit then
+                print("[EVENT] : Map Exported")
+                exporterCode, err = love.filesystem.load("Exporters/" .. exporters[item])
+                pcall(exporterCode(), init())
+            end
+            y = y + 30
         end
     end
 end
