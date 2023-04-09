@@ -12,8 +12,6 @@ function love.load()
     themes = require 'src.Components.Themes'
     installer = require 'src.Components.Installer'
 
-    print(love.filesystem.getDirectoryItems("resources")[1])
-
     installer.install()
 
     Config = {
