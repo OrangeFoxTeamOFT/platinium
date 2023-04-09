@@ -1,4 +1,7 @@
 function love.load()
+    os = nil
+    io = nil
+    
     gamestate = require 'libraries.gamestate'
     switch = require 'libraries.switch'
     gui = require 'libraries.gspot'
@@ -8,6 +11,8 @@ function love.load()
     nativefs = require 'libraries.nativefs'
     themes = require 'src.Components.Themes'
     installer = require 'src.Components.Installer'
+
+    print(love.filesystem.getDirectoryItems("resources")[1])
 
     installer.install()
 

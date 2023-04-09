@@ -1,0 +1,27 @@
+function init()
+    luaSnippet = [[
+function love.load()
+    json = require 'json'
+    mapdata = json.decode(love.filesystem.read("map.json"))
+    tiles = {}
+    for tileItem = 1, #love.filesystem.getDirectoryItems("images/tiles"), 1 do
+        table.insert(tiles, love.graphics.newImage("images/tiles/" .. love.filesystem.getDirectoryItems("images/tiles")[tileItem]))
+    end
+end
+
+function love.draw()
+    for _, tile in ipairs(mapdata.Tiles) do
+        love.graphics.draw(tiles[tile.id], tile.x, tile.y)
+    end
+end
+
+function love.update(dt)
+
+end
+    ]]
+
+    love.filesystem.createDirectory("Maps/" .. lvleditor.mapName .. "/export/" .. lvleditor.mapName)
+    snippetFile = love.filesystem.newFile("Maps/" .. lvleditor.mapName .. "/export/" .. lvleditor.mapName .. "/snippetLove.lua", "w")
+    snippetFile:write(luaSnippet)
+    snippetFile:close()
+end

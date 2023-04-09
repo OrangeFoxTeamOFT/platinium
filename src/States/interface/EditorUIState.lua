@@ -11,9 +11,9 @@ function UIState.load()
     help_btn = suit.Button(lang.editor.btn_help, 200, 0, 100, 30)
 
     placeTileBtn = suit.Button("", 500, 0, 32, 32)
-    placeObjectBtn = suit.Button("",532, 0, 32, 32)
+    placeObjectBtn = suit.Button(" ", 532, 0, 32, 32)
 
-    export_btn = suit.Button("Export", {id=3},300, 0, 100, 30)
+    export_btn = suit.Button("Export", 300, 0, 100, 30)
 
     if placeTileBtn.hit then
         placingMode = "tiles"
@@ -27,17 +27,6 @@ function UIState.load()
         else
             btn_export_enable = true
         end
-    end
-
-    if suit.isHovered(1) then
-        canPlace = false
-    else
-        canPlace = true
-    end
-    if suit.isHovered(2) then
-        canPlace = false
-    else
-        canPlace = true
     end
 
     if file_btn.hovered then
