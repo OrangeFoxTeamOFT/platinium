@@ -11,6 +11,8 @@ function love.load()
     nativefs = require 'libraries.nativefs'
     themes = require 'src.Components.Themes'
     installer = require 'src.Components.Installer'
+    love.graphics.gradient = require 'libraries.gradient'
+    love.graphics.drawInRect = require 'libraries.draw'
 
     installer.install()
 
@@ -29,11 +31,12 @@ function love.load()
 
     States = {
         LevelEditorState = require 'src.States.LevelEditorState',
-        MapManagerState = require 'src.States.MapManagerState'
+        MapManagerState = require 'src.States.MapManagerState',
+        DebugState = require 'src.States.DebugState'
     }
 
     gamestate.registerEvents()
-    gamestate.switch(States.MapManagerState)
+    gamestate.switch(States.DebugState)
 end
 
 function love.update(elapsed)
