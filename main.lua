@@ -11,8 +11,12 @@ function love.load()
     nativefs = require 'libraries.nativefs'
     themes = require 'src.Components.Themes'
     installer = require 'src.Components.Installer'
-    love.graphics.gradient = require 'libraries.gradient'
-    love.graphics.drawInRect = require 'libraries.draw'
+
+    LoveAddons = love.filesystem.getDirectoryItems("libraries/addons")
+    for addon = 1, #LoveAddons, 1 do
+        require('libraries.addons.' .. string.gsub(LoveAddons[addon], ".lua", ""))
+    end 
+
 
     installer.install()
 

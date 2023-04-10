@@ -1,4 +1,4 @@
-function gradient(colors)
+function love.graphics.gradient(colors)
     local direction = colors.direction or "horizontal"
     if direction == "horizontal" then
         direction = true
@@ -22,4 +22,4 @@ function gradient(colors)
     return result
 end
 
-return gradient
+return love.graphics.gradient
